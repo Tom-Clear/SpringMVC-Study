@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource=""></properties>
+    <typeAliases>
+
+        <package name=""/>
+    </typeAliases>
+    <!-- default 指定默认的数据库环境为 MySQL，引用其中一个 environment 元素的id -->
+    <environments default="mysql">
+        <!-- 配置名为mysql(该名字任意)的环境 -->
+        <environment id="mysql">
+            <!-- 配置事务管理器，JDBC代表使用JDBC自带的事务提交和回滚 -->
+            <transactionManager type="JDBC"/>
+            <!-- dataSource 配置数据源，此处使用 MyBatis 内置的数据源 -->
+            <dataSource type="POOLED">
+                <!-- 配置连接数据库的驱动、URL、用户名、密码 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis?serverTimezone=UTC"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 配置 MyBatis 需要加载的 Mapper -->
+        <mapper resource="com/wsw/app/dao/NewsMapper.xml"></mapper>
+    </mappers>
+
+</configuration>

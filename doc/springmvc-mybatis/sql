@@ -1,0 +1,10 @@
+create database mybatis;
+use mybatis;
+# 创建数据表alter
+create table news_inf
+(
+news_id integer primary key auto_increment,
+news_title varchar(255),
+news_content varchar(255)
+);
+
