@@ -4,11 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-    <properties resource=""></properties>
-    <typeAliases>
-
-        <package name=""/>
-    </typeAliases>
     <!-- default 指定默认的数据库环境为 MySQL，引用其中一个 environment 元素的id -->
     <environments default="mysql">
         <!-- 配置名为mysql(该名字任意)的环境 -->
@@ -27,7 +22,7 @@
     </environments>
     <mappers>
         <!-- 配置 MyBatis 需要加载的 Mapper -->
-        <mapper resource="com/wsw/app/dao/NewsMapper.xml"></mapper>
+        <mapper resource="com/wsw/app/dao/NewsMapper.xml"/>
     </mappers>
 
 </configuration>

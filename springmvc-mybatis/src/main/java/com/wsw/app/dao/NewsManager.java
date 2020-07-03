@@ -4,11 +4,14 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 
 public class NewsManager {
 
+    private static Logger logger = LogManager.getLogger(NewsManager.class);
     private static SqlSessionFactory sqlSessionFactory;
 
     public static void main(String[] args) throws Exception{
@@ -33,7 +36,7 @@ public class NewsManager {
             var n = sqlSession.insert("com.wsw.app.dao.NewsMapper.saveNews",news);
             System.out.printf("插入了%d条数据%n",n);
         }catch (Exception ex){
-
+            logger.error("加入数据库报错：" + ex.getCause());
         }finally {
             // 提交事务
             sqlSession.commit();
