@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.NewsInfDao">
+  <resultMap id="BaseResultMap" type="generate.NewsInf">
+    <id column="news_id" jdbcType="INTEGER" property="newsId" />
+    <result column="news_title" jdbcType="VARCHAR" property="newsTitle" />
+    <result column="news_content" jdbcType="VARCHAR" property="newsContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    news_id, news_title, news_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from news_inf
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from news_inf
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="news_id" keyProperty="newsId" parameterType="generate.NewsInf" useGeneratedKeys="true">
+    insert into news_inf (news_title, news_content)
+    values (#{newsTitle,jdbcType=VARCHAR}, #{newsContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="news_id" keyProperty="newsId" parameterType="generate.NewsInf" useGeneratedKeys="true">
+    insert into news_inf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsTitle != null">
+        news_title,
+      </if>
+      <if test="newsContent != null">
+        news_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsTitle != null">
+        #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        #{newsContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generate.NewsInf">
+    update news_inf
+    <set>
+      <if test="newsTitle != null">
+        news_title = #{newsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsContent != null">
+        news_content = #{newsContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generate.NewsInf">
+    update news_inf
+    set news_title = #{newsTitle,jdbcType=VARCHAR},
+      news_content = #{newsContent,jdbcType=VARCHAR}
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+</mapper>

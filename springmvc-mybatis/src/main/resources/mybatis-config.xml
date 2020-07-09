@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <!-- 配置自定义的对象工厂 -->
+    <objectFactory type="com.wsw.app.tools.FkObjectFactory">
+        <!--  为对象工厂配置属性  -->
+        <property name="author" value="wsw"/>
+    </objectFactory>
     <!-- default 指定默认的数据库环境为 MySQL，引用其中一个 environment 元素的id -->
     <environments default="mysql">
         <!-- 配置名为mysql(该名字任意)的环境 -->
@@ -22,7 +27,7 @@
     </environments>
     <mappers>
         <!-- 配置 MyBatis 需要加载的 Mapper -->
-        <mapper resource="com/wsw/app/dao/NewsMapper.xml"/>
+        <mapper resource="com/wsw/app/dao/NewsInfDao.xml"/>
     </mappers>
 
 </configuration>

@@ -8,9 +8,10 @@
     <Loggers>
         <!-- 全局日志配置 -->
         <Root>
-            <AppenderRef ref="Console"></AppenderRef>
+            <AppenderRef ref="Console">
+            </AppenderRef>
         </Root>
         <!-- MyBatis 日志配置，将其设置为debug级别-->
-        <Logger name="com.wsw.app.dao" level="debug"/>
+        <Logger name="com.wsw.app" level="debug"/>
     </Loggers>
 </Configuration>
